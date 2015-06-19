@@ -209,6 +209,15 @@ router.get('/tags/:tag', function (req, res) {
   });
 });
 
+router.get('/links', function (req, res) {
+  res.render('links', {
+    title: '友情链接',
+    user: req.session.user,
+    success: req.flash('success').toString(),
+    error: req.flash('error').toString()
+  });
+});
+
 router.get('/search', function (req, res) {
   Post.search(req.query.keyword, function (err, posts) {
     if (err) {
